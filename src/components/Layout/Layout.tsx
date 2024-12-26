@@ -9,7 +9,9 @@ export const Layout = ({ children, isSimpleHeader = false }: { children: React.R
     <div>
       <Header toggleMenu={() => setIsSideMenuOpen(!isSideMenuOpen)} isSimpleHeader={isSimpleHeader} />
       <SideMenu isOpen={isSideMenuOpen} />
-      {children}
+      <main className="main">
+        {children}
+      </main>
     </div>
   );
 };
