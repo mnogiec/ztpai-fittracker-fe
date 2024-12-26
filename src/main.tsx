@@ -5,6 +5,6 @@ import { Routes } from "./Routes.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-      <Routes />
+    <Routes />
   </StrictMode>
 );
