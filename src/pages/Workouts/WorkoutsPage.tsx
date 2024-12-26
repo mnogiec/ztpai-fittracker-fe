@@ -1,4 +1,9 @@
-export const WorkoutsPage = () => {
-  return <p>Workouts</p>;
-};
+import { Layout } from "../../components/Layout/Layout";
 
+export const WorkoutsPage = () => {
+  return (
+    <Layout>
+      <p>Workouts</p>
+    </Layout>
+  );
+};

@@ -1,3 +1,10 @@
+import { Layout } from "../../components/Layout/Layout";
+
 export const ExercisesBasePage = () => {
-  return <p>ExercisesBase</p>;
+  return (
+    <Layout>
+      <p>ExercisesBase</p>
+    </Layout>
+  )
+  
 };

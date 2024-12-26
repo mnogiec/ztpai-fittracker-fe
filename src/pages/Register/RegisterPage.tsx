@@ -1,3 +1,9 @@
+import { Layout } from "../../components/Layout/Layout";
+
 export const RegisterPage = () => {
-  return <p>Register</p>;
+  return (
+    <Layout isSimpleHeader={true}>
+      <p>Register</p>
+    </Layout>
+  );
 };

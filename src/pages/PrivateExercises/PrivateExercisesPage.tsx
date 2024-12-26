@@ -1,3 +1,9 @@
+import { Layout } from "../../components/Layout/Layout";
+
 export const PrivateExercisesPage = () => {
-  return <p>PrivateExercisesPage</p>;
+  return (
+    <Layout>
+      <p>PrivateExercisesPage</p>
+    </Layout>
+  );
 };
