@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { UsersApi } from "../../api/UsersApi";
 import { AxiosError } from "axios";
+import { useRedirectIfLogged } from "../../hooks/useRedirectIfLogged";
 
 export const ACCESS_TOKEN_KEY = "accessToken";
 
@@ -14,6 +15,7 @@ interface LoginForm {
 }
 
 export const LoginPage = () => {
+  useRedirectIfLogged();
   const navigate = useNavigate();
   
   const {
