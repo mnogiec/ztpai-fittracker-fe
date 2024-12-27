@@ -5,7 +5,6 @@ import { TextInput } from "../../components/TextInput/TextInput";
 import { useMutation } from "@tanstack/react-query";
 import { RegisterBody, UsersApi } from "../../api/UsersApi";
 import { AxiosError } from "axios";
-import { useRedirectIfLogged } from "../../hooks/useRedirectIfLogged";
 
 interface RegisterForm {
   firstName: string;
@@ -17,8 +16,6 @@ interface RegisterForm {
 }
 
 export const RegisterPage = () => {
-  useRedirectIfLogged();
-
   const {
     control,
     handleSubmit,
