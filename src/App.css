@@ -135,6 +135,10 @@ body {
   flex-direction: column;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
