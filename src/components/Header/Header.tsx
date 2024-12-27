@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { ACCESS_TOKEN_KEY } from "../../pages/Login/LoginPage";
 
 export const Header = ({
   toggleMenu,
@@ -7,9 +8,12 @@ export const Header = ({
   toggleMenu: () => void;
   isSimpleHeader?: boolean;
 }) => {
+  const navigate = useNavigate();
+  
   const handleLogout = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Logout initiated");
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+    navigate("/login", { replace: true });
   };
 
   return (
