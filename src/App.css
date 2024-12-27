@@ -58,6 +58,12 @@ body {
   margin: 0 auto;
 }
 
+.utils-main {
+  padding: 4rem 1.5rem 7rem 1.5rem;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
 @media (max-width: 768px) {
   .main {
     padding: 10rem 1.5rem 7rem 1.5rem;

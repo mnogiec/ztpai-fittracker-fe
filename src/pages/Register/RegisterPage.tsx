@@ -61,7 +61,7 @@ export const RegisterPage = () => {
   }
 
   return (
-    <Layout isSimpleHeader={true}>
+    <Layout isSimpleHeader={true} isUtils={true}>
       <div className="auth-container flex-center">
         <div className="card flex-column auth-card text-center">
           <div>

@@ -19,6 +19,6 @@ export interface RegisterBody {
 }
 
 export const UsersApi = {
-  login: (body: LoginBody) => HttpService.post<LoginResponse>('/users/login', body),
+  login: (body: LoginBody) => HttpService.post<LoginResponse>('/auth/login', body),
   register: (body: RegisterBody) => HttpService.post<User>('/users/register', body),
 }
