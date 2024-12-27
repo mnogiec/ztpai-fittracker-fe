@@ -96,7 +96,7 @@ export const LoginPage = () => {
             )}
 
             <button type="submit" className="btn auth-btn" disabled={isPending}>
-              Login
+              {isPending ? "Logging in..." : "Login"}
             </button>
           </form>
 
