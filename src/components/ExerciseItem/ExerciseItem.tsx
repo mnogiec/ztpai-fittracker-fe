@@ -56,7 +56,7 @@ export const ExerciseItem = ({
                 onEdit?.(exercise);
               }}
             >
-              <FontAwesomeIcon icon={faPenToSquare} />
+              <FontAwesomeIcon icon={faPenToSquare} color="royalblue" size="lg" />
             </button>
             <button
               type="button"
@@ -66,7 +66,7 @@ export const ExerciseItem = ({
                 onDelete?.(exercise);
               }}
             >
-              <FontAwesomeIcon icon={faTrashCan} />
+              <FontAwesomeIcon icon={faTrashCan} color="royalblue" size="lg" />
             </button>
           </div>
         )}
