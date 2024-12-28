@@ -5,6 +5,8 @@ import { EXERCISES_API_KEYS } from "../../api/ExercisesApi";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { EXERCISES_CATEGORIES_API_KEYS } from "../../api/ExerciseCategoriesApi";
 import { ExerciseCategoriesApi } from "../../api/ExerciseCategoriesApi";
+import { User } from "../../models/User";
+import { USER_KEY } from "../../pages/Login/LoginPage";
 
 interface UpsertForm {
   name: string;
@@ -12,6 +14,7 @@ interface UpsertForm {
   description?: string;
   videoUrl?: string;
   imageUrl?: string;
+  isPrivate: boolean;
 }
 
 export const UpsertExerciseModal = ({
@@ -32,8 +35,12 @@ export const UpsertExerciseModal = ({
       description: exercise?.description || "",
       videoUrl: exercise?.videoUrl || "",
       imageUrl: exercise?.imageUrl || "",
+      isPrivate: exercise?.isPrivate ?? false,
     },
   });
+
+  const user: User|null = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+  const isAdmin = user?.isAdmin;
 
   const queryClient = useQueryClient();
 
@@ -46,17 +53,10 @@ export const UpsertExerciseModal = ({
   const saveExerciseMutation = useMutation({
     mutationFn: (body: UpsertForm) =>
       exercise
-        ? ExercisesApi.updateExercise(exercise.id, {
-            ...body,
-            isPrivate: true,
-          })
+        ? ExercisesApi.updateExercise(exercise.id, body)
         : ExercisesApi.createExercise({
-            name: body.name,
-            description: body.description || "",
+            ...body,
             categoryId: body.categoryId!,
-            isPrivate: true,
-            videoUrl: body.videoUrl || "",
-            imageUrl: body.imageUrl || "",
           }),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -159,6 +159,26 @@ export const UpsertExerciseModal = ({
                 )}
               />
             </div>
+            {isAdmin && (
+              <div className="is-private-row">
+                <label htmlFor="isPrivate">Private:</label>
+                <Controller
+                  name="isPrivate"
+                  control={control}
+                  render={({ field: { value, onBlur, onChange, name, ref, disabled } }) => (
+                     <input
+                      type="checkbox"
+                      checked={value}
+                      onBlur={onBlur}
+                      ref={ref}
+                      disabled={disabled}
+                      onChange={onChange}
+                      name={name}
+                    />
+                  )}
+                />
+              </div>
+            )}
             <button type="submit" className="btn">
               Save
             </button>
