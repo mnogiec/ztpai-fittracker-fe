@@ -18,12 +18,14 @@ export const ExercisesBasePage = () => {
     null
   );
 
-  const user: User|null = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+  const user: User | null = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
   const canManage = user?.isAdmin;
 
+  const [search, setSearch] = useState("");
+
   const { data: exercisesData } = useQuery({
-    queryKey: [EXERCISES_API_KEYS.GET_ALL_PUBLIC],
-    queryFn: ExercisesApi.getAllPublic,
+    queryKey: [EXERCISES_API_KEYS.GET_ALL_PUBLIC, search],
+    queryFn: () => ExercisesApi.getAllPublic(search),
   });
   const exercises = exercisesData?.data;
 
@@ -32,23 +34,30 @@ export const ExercisesBasePage = () => {
       <div className="exercises-container">
         <div className="exercises-topbar">
           <h1 className="text-4xl font-bold">Exercises Base</h1>
-          {canManage && (
-            <div className="exercises-topbar-right">
+          <div className="exercises-topbar-right">
+            {canManage && (
               <button
                 type="button"
-              className="btn exercises-add-button"
-              onClick={() => {
-                setSelectedExercise(null);
-                setIsCreateEditModalOpen(true);
-              }}
-            >
-              <span>
-                <span className="exercises-add-text">Add Exercise</span>
-                <FontAwesomeIcon icon={faPlus} />
+                className="btn exercises-add-button"
+                onClick={() => {
+                  setSelectedExercise(null);
+                  setIsCreateEditModalOpen(true);
+                }}
+              >
+                <span>
+                  <span className="exercises-add-text">Add Exercise</span>
+                  <FontAwesomeIcon icon={faPlus} />
                 </span>
               </button>
-            </div>
-          )}
+            )}
+            <input
+              type="text"
+              placeholder="Search by exercise name"
+              className="exercises-search-input text-input"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
         </div>
 
         <div className="exercises-wrapper">

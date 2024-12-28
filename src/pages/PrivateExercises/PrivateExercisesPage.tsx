@@ -16,9 +16,11 @@ export const PrivateExercisesPage = () => {
     null
   );
 
+  const [search, setSearch] = useState("");
+
   const { data: exercisesData } = useQuery({
-    queryKey: [EXERCISES_API_KEYS.GET_ALL_PRIVATE],
-    queryFn: ExercisesApi.getAllPrivate,
+    queryKey: [EXERCISES_API_KEYS.GET_ALL_PRIVATE, search],
+    queryFn: () => ExercisesApi.getAllPrivate(search),
   });
   const exercises = exercisesData?.data;
 
@@ -41,6 +43,13 @@ export const PrivateExercisesPage = () => {
                 <FontAwesomeIcon icon={faPlus} />
               </span>
             </button>
+            <input
+              type="text"
+              placeholder="Search by exercise name"
+              className="exercises-search-input text-input"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
         </div>
 

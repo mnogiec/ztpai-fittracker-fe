@@ -21,9 +21,14 @@ type UpdateExerciseBody = Partial<CreateExerciseBody>;
 type GetExerciseResponse = Record<string, Exercise[]>;
 
 export const ExercisesApi = {
-  getAllPublic: () => HttpService.get<GetExerciseResponse>("/exercises/public"),
-  getAllPrivate: () =>
-    HttpService.get<GetExerciseResponse>("/exercises/private"),
+  getAllPublic: (searchText: string) =>
+    HttpService.get<GetExerciseResponse>("/exercises/public", {
+      params: { searchText },
+    }),
+  getAllPrivate: (searchText: string) =>
+    HttpService.get<GetExerciseResponse>("/exercises/private", {
+      params: { searchText },
+    }),
   getAllMy: () => HttpService.get<GetExerciseResponse>("/exercises"),
   createExercise: (body: CreateExerciseBody) =>
     HttpService.post<Exercise>("/exercises", body),
