@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router';
-import { ACCESS_TOKEN_KEY } from '../../pages/Login/LoginPage';
+import { ACCESS_TOKEN_KEY, USER_KEY } from '../../pages/Login/LoginPage';
 
 const SideMenu = ({ isOpen }: { isOpen: boolean }) => {
   const navigate = useNavigate();
@@ -7,6 +7,7 @@ const SideMenu = ({ isOpen }: { isOpen: boolean }) => {
   const handleLogout = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     localStorage.removeItem(ACCESS_TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
     navigate("/login", { replace: true });
   };
 

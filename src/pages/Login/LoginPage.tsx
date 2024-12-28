@@ -7,6 +7,7 @@ import { UsersApi } from "../../api/UsersApi";
 import { AxiosError } from "axios";
 
 export const ACCESS_TOKEN_KEY = "accessToken";
+export const USER_KEY = "user";
 
 interface LoginForm {
   email: string;
@@ -30,8 +31,9 @@ export const LoginPage = () => {
   const { mutate: login, isPending, error } = useMutation({
     mutationFn: (data: LoginForm) => UsersApi.login(data),
     onSuccess: (data) => {
-      const { accessToken } = data.data;
+      const { accessToken, user } = data.data;
       localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
       navigate("/");
     },
   });
