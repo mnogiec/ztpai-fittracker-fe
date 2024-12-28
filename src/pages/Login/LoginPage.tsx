@@ -91,7 +91,7 @@ export const LoginPage = () => {
             {error && (
               <p className="text-error">
                 {(error as AxiosError<{ message: string }>)?.response?.data
-                  ?.message || "Error registering"}
+                  ?.message || "Error logging in"}
               </p>
             )}
 
