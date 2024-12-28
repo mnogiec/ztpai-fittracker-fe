@@ -38,9 +38,9 @@ export const PrivateExercisesPage = () => {
                 setIsCreateEditModalOpen(true);
               }}
             >
-              <span>
+              <span className="exercises-add-button-content">
                 <span className="exercises-add-text">Add Exercise</span>
-                <FontAwesomeIcon icon={faPlus} />
+                <FontAwesomeIcon icon={faPlus} color="white" size="lg"  />
               </span>
             </button>
             <input

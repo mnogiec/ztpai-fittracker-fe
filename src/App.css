@@ -479,6 +479,10 @@ body {
   font: inherit;
 }
 
+.exercises-add-button-content {
+  min-width: 30px;
+}
+
 @media only screen and (max-width: 768px) {
   .exercises-add-text {
     display: none;
