@@ -5,9 +5,9 @@ export const EXERCISES_API_KEYS = {
   GET_ALL_PUBLIC: 'exercises/public',
   GET_ALL_PRIVATE: 'exercises/private',
   GET_ALL_MY: 'exercises/my',
-}
+} as const;
 
-interface CreateExerciseBody {
+export interface CreateExerciseBody {
   name: string;
   categoryId: number;
   isPrivate: boolean;

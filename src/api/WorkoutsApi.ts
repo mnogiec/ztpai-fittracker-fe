@@ -3,7 +3,7 @@ import { HttpService } from "./HttpService";
 
 export const WORKOUTS_API_KEYS = {
   GET_ALL_DAYS: 'workouts/days',
-}
+} as const;
 
 interface CreateWorkoutExerciseBody {
   workoutDayId?: string;
