@@ -34,11 +34,9 @@ export const WorkoutsPage = () => {
               {!todayWorkoutDay && (
                 <div className='workouts-day-box'>
                   <p className='font-medium text-xl'>Today</p>
-                  <div className='workouts-units-wrapper'>
-                    <p className='workouts-not-found text-gray text-center'>
-                      You don't have any exercises done today.
-                    </p>
-                  </div>
+                  <p className='workouts-not-found text-gray text-center'>
+                    You don't have any exercises done today.
+                  </p>
                   <div className='workouts-manage-wrapper'>
                     <button
                       type='button'
