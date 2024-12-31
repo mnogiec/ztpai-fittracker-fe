@@ -1,8 +1,8 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { useMutation } from "@tanstack/react-query";
-import { ExercisesApi } from "../../api/ExercisesApi";
-import { EXERCISES_API_KEYS } from "../../api/ExercisesApi";
-import { Exercise } from "../../models/Exercise";
+import { useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
+import { ExercisesApi } from '../../api/ExercisesApi';
+import { EXERCISES_API_KEYS } from '../../api/ExercisesApi';
+import { Exercise } from '../../models/Exercise';
 
 export const DeleteExerciseModal = ({
   exercise,
@@ -30,27 +30,26 @@ export const DeleteExerciseModal = ({
   });
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-topbar">
-          <h3 className="modal-title font-bold text-2xl">Confirm Delete</h3>
-          <span className="close" onClick={onClose}>
+    <div className='modal'>
+      <div className='modal-content'>
+        <div className='modal-topbar'>
+          <h3 className='modal-title font-bold text-2xl'>Confirm Delete</h3>
+          <span className='close' onClick={onClose}>
             &times;
           </span>
         </div>
-        <div className="modal-body">
-          <p className="mb-1">
-            Are you sure you want to delete the exercise{" "}
+        <div className='modal-body'>
+          <p className='mb-1'>
+            Are you sure you want to delete the exercise{' '}
             <strong>{exercise?.name}</strong>?
           </p>
-          <div className="modal-footer">
+          <div className='modal-footer'>
             <button
               onClick={() => deleteExerciseMutation.mutate(exercise?.id)}
-              className="btn"
-            >
+              className='btn'>
               Yes
             </button>
-            <button onClick={onClose} className="btn">
+            <button onClick={onClose} className='btn'>
               No
             </button>
           </div>

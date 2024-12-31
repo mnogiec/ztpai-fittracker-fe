@@ -1,5 +1,5 @@
-import { User } from "./User";
-import { WorkoutExercise } from "./WorkoutExercise";
+import { User } from './User';
+import { WorkoutExercise } from './WorkoutExercise';
 
 export interface WorkoutDay {
   id: string;

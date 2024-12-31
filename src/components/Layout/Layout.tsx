@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Header } from "../Header/Header";
-import SideMenu from "../SideMenu/SideMenu";
+import { useState } from 'react';
+import { Header } from '../Header/Header';
+import SideMenu from '../SideMenu/SideMenu';
 
 export const Layout = ({
   children,
@@ -21,9 +21,9 @@ export const Layout = ({
       />
       <SideMenu isOpen={isSideMenuOpen} />
       {isUtils ? (
-        <div className="utils-main">{children}</div>
+        <div className='utils-main'>{children}</div>
       ) : (
-        <div className="main">{children}</div>
+        <div className='main'>{children}</div>
       )}
     </div>
   );

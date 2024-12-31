@@ -1,5 +1,5 @@
-import React from "react";
-import { Exercise } from "../../models/Exercise";
+import React from 'react';
+import { Exercise } from '../../models/Exercise';
 
 interface ExerciseDetailsProps {
   isOpen: boolean;
@@ -28,34 +28,33 @@ export const ExerciseDetailsModal: React.FC<ExerciseDetailsProps> = ({
     : null;
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-topbar">
-          <h3 className="modal-title font-bold text-2xl">{exercise.name}</h3>
-          <span className="close" onClick={onClose}>
+    <div className='modal'>
+      <div className='modal-content'>
+        <div className='modal-topbar'>
+          <h3 className='modal-title font-bold text-2xl'>{exercise.name}</h3>
+          <span className='close' onClick={onClose}>
             &times;
           </span>
         </div>
-        <div className="modal-body">
+        <div className='modal-body'>
           {videoId ? (
             <iframe
-              width="100%"
-              height="315"
+              width='100%'
+              height='315'
               src={`https://www.youtube.com/embed/${videoId}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+              frameBorder='0'
+              allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+              allowFullScreen></iframe>
           ) : (
             exercise.imageUrl && (
               <img
                 src={exercise.imageUrl}
                 alt={exercise.name}
-                className="w-full mb-4"
+                className='w-full mb-4'
               />
             )
           )}
-          <p className="modal-text text-gray">{exercise.description}</p>
+          <p className='modal-text text-gray'>{exercise.description}</p>
         </div>
       </div>
     </div>

@@ -1,13 +1,13 @@
-import { Controller, useForm } from "react-hook-form";
-import { Layout } from "../../components/Layout/Layout";
-import { TextInput } from "../../components/TextInput/TextInput";
-import { Link, useNavigate } from "react-router";
-import { useMutation } from "@tanstack/react-query";
-import { UsersApi } from "../../api/UsersApi";
-import { AxiosError } from "axios";
+import { Controller, useForm } from 'react-hook-form';
+import { Layout } from '../../components/Layout/Layout';
+import { TextInput } from '../../components/TextInput/TextInput';
+import { Link, useNavigate } from 'react-router';
+import { useMutation } from '@tanstack/react-query';
+import { UsersApi } from '../../api/UsersApi';
+import { AxiosError } from 'axios';
 
-export const ACCESS_TOKEN_KEY = "accessToken";
-export const USER_KEY = "user";
+export const ACCESS_TOKEN_KEY = 'accessToken';
+export const USER_KEY = 'user';
 
 interface LoginForm {
   email: string;
@@ -16,25 +16,29 @@ interface LoginForm {
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>({
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
-  const { mutate: login, isPending, error } = useMutation({
+  const {
+    mutate: login,
+    isPending,
+    error,
+  } = useMutation({
     mutationFn: (data: LoginForm) => UsersApi.login(data),
     onSuccess: (data) => {
       const { accessToken, user } = data.data;
       localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
       localStorage.setItem(USER_KEY, JSON.stringify(user));
-      navigate("/");
+      navigate('/');
     },
   });
 
@@ -44,65 +48,64 @@ export const LoginPage = () => {
 
   return (
     <Layout isSimpleHeader={true} isUtils={true}>
-      <div className="auth-container flex-center">
-        <div className="card flex-column auth-card text-center">
+      <div className='auth-container flex-center'>
+        <div className='card flex-column auth-card text-center'>
           <div>
-            <p className="text-4xl font-bold">Good to see you again!</p>
-            <h1 className="text-xl font-medium text-gray">
+            <p className='text-4xl font-bold'>Good to see you again!</p>
+            <h1 className='text-xl font-medium text-gray'>
               Login to start using the app
             </h1>
           </div>
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex-column auth-form"
-          >
+            className='flex-column auth-form'>
             <Controller
-              name="email"
+              name='email'
               control={control}
               rules={{
-                required: "Email is required",
+                required: 'Email is required',
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Invalid email address",
+                  message: 'Invalid email address',
                 },
               }}
               render={({ field }) => (
                 <TextInput
                   {...field}
-                  placeholder="Email"
+                  placeholder='Email'
                   error={errors.email?.message}
                 />
               )}
             />
 
             <Controller
-              name="password"
+              name='password'
               control={control}
-              rules={{ required: "Password is required" }}
+              rules={{ required: 'Password is required' }}
               render={({ field }) => (
                 <TextInput
                   {...field}
-                  type="password"
-                  placeholder="Password"
+                  type='password'
+                  placeholder='Password'
                   error={errors.password?.message}
                 />
               )}
             />
 
             {error && (
-              <p className="text-error">
+              <p className='text-error'>
                 {(error as AxiosError<{ message: string }>)?.response?.data
-                  ?.message || "Error logging in"}
+                  ?.message || 'Error logging in'}
               </p>
             )}
 
-            <button type="submit" className="btn auth-btn" disabled={isPending}>
-              {isPending ? "Logging in..." : "Login"}
+            <button type='submit' className='btn auth-btn' disabled={isPending}>
+              {isPending ? 'Logging in...' : 'Login'}
             </button>
           </form>
 
-          <Link to="/register" className="link">
+          <Link to='/register' className='link'>
             I don't have an account
           </Link>
         </div>

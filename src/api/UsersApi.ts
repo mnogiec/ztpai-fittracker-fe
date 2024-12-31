@@ -1,10 +1,10 @@
-import { User } from "../models/User";
-import { HttpService } from "./HttpService";
+import { User } from '../models/User';
+import { HttpService } from './HttpService';
 
-export interface LoginBody{
+export interface LoginBody {
   email: string;
   password: string;
-};
+}
 
 interface LoginResponse {
   accessToken: string;
@@ -19,6 +19,8 @@ export interface RegisterBody {
 }
 
 export const UsersApi = {
-  login: (body: LoginBody) => HttpService.post<LoginResponse>('/auth/login', body),
-  register: (body: RegisterBody) => HttpService.post<User>('/users/register', body),
-}
+  login: (body: LoginBody) =>
+    HttpService.post<LoginResponse>('/auth/login', body),
+  register: (body: RegisterBody) =>
+    HttpService.post<User>('/users/register', body),
+};

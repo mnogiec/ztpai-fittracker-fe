@@ -3,23 +3,23 @@ import {
   Routes as RouterRoutes,
   Route,
   Navigate,
-} from "react-router";
-import { WorkoutsPage } from "./pages/Workouts/WorkoutsPage";
-import { RegisterPage } from "./pages/Register/RegisterPage";
-import { ExercisesBasePage } from "./pages/ExercisesBase/ExercisesBasePage";
-import { PrivateExercisesPage } from "./pages/PrivateExercises/PrivateExercisesPage";
-import { LoginPage } from "./pages/Login/LoginPage";
+} from 'react-router';
+import { WorkoutsPage } from './pages/Workouts/WorkoutsPage';
+import { RegisterPage } from './pages/Register/RegisterPage';
+import { ExercisesBasePage } from './pages/ExercisesBase/ExercisesBasePage';
+import { PrivateExercisesPage } from './pages/PrivateExercises/PrivateExercisesPage';
+import { LoginPage } from './pages/Login/LoginPage';
 
-import "./App.css";
-import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
-import { NotForLogged } from "./components/NotForLogged/NotForLogged";
+import './App.css';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
+import { NotForLogged } from './components/NotForLogged/NotForLogged';
 
 export const Routes = () => {
   return (
     <BrowserRouter>
       <RouterRoutes>
         <Route
-          path="/"
+          path='/'
           element={
             <ProtectedRoute>
               <WorkoutsPage />
@@ -27,7 +27,7 @@ export const Routes = () => {
           }
         />
         <Route
-          path="login"
+          path='login'
           element={
             <NotForLogged>
               <LoginPage />
@@ -35,7 +35,7 @@ export const Routes = () => {
           }
         />
         <Route
-          path="register"
+          path='register'
           element={
             <NotForLogged>
               <RegisterPage />
@@ -43,7 +43,7 @@ export const Routes = () => {
           }
         />
         <Route
-          path="exercises-base"
+          path='exercises-base'
           element={
             <ProtectedRoute>
               <ExercisesBasePage />
@@ -51,14 +51,14 @@ export const Routes = () => {
           }
         />
         <Route
-          path="private-exercises"
+          path='private-exercises'
           element={
             <ProtectedRoute>
               <PrivateExercisesPage />
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path='*' element={<Navigate to='/' replace />} />
       </RouterRoutes>
     </BrowserRouter>
   );

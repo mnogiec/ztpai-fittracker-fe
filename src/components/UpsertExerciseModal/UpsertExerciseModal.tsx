@@ -1,12 +1,12 @@
-import { Controller, useForm } from "react-hook-form";
-import { Exercise } from "../../models/Exercise";
-import { ExercisesApi } from "../../api/ExercisesApi";
-import { EXERCISES_API_KEYS } from "../../api/ExercisesApi";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { EXERCISES_CATEGORIES_API_KEYS } from "../../api/ExerciseCategoriesApi";
-import { ExerciseCategoriesApi } from "../../api/ExerciseCategoriesApi";
-import { User } from "../../models/User";
-import { USER_KEY } from "../../pages/Login/LoginPage";
+import { Controller, useForm } from 'react-hook-form';
+import { Exercise } from '../../models/Exercise';
+import { ExercisesApi } from '../../api/ExercisesApi';
+import { EXERCISES_API_KEYS } from '../../api/ExercisesApi';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { EXERCISES_CATEGORIES_API_KEYS } from '../../api/ExerciseCategoriesApi';
+import { ExerciseCategoriesApi } from '../../api/ExerciseCategoriesApi';
+import { User } from '../../models/User';
+import { USER_KEY } from '../../pages/Login/LoginPage';
 
 interface UpsertForm {
   name: string;
@@ -30,16 +30,16 @@ export const UpsertExerciseModal = ({
     formState: { errors },
   } = useForm<UpsertForm>({
     defaultValues: {
-      name: exercise?.name || "",
+      name: exercise?.name || '',
       categoryId: exercise?.category?.id,
-      description: exercise?.description || "",
-      videoUrl: exercise?.videoUrl || "",
-      imageUrl: exercise?.imageUrl || "",
+      description: exercise?.description || '',
+      videoUrl: exercise?.videoUrl || '',
+      imageUrl: exercise?.imageUrl || '',
       isPrivate: exercise?.isPrivate ?? false,
     },
   });
 
-  const user: User|null = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+  const user: User | null = JSON.parse(localStorage.getItem(USER_KEY) || '{}');
   const isAdmin = user?.isAdmin;
 
   const queryClient = useQueryClient();
@@ -73,46 +73,45 @@ export const UpsertExerciseModal = ({
   });
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-topbar">
-          <h3 className="modal-title font-bold text-2xl">
-            {exercise ? "Edit Exercise" : "Add Exercise"}
+    <div className='modal'>
+      <div className='modal-content'>
+        <div className='modal-topbar'>
+          <h3 className='modal-title font-bold text-2xl'>
+            {exercise ? 'Edit Exercise' : 'Add Exercise'}
           </h3>
-          <span className="close" onClick={onClose}>
+          <span className='close' onClick={onClose}>
             &times;
           </span>
         </div>
-        <div className="modal-body">
+        <div className='modal-body'>
           <form
-            className="exercises-form"
+            className='exercises-form'
             onSubmit={handleSubmit((data) => {
               saveExerciseMutation.mutate(data);
-            })}
-          >
-            <div className="exercises-form-row">
-              <label htmlFor="name">Name:</label>
+            })}>
+            <div className='exercises-form-row'>
+              <label htmlFor='name'>Name:</label>
               <Controller
-                name="name"
+                name='name'
                 control={control}
-                rules={{ required: "Name is required" }}
+                rules={{ required: 'Name is required' }}
                 render={({ field }) => (
-                  <input {...field} id="name" className="text-input" />
+                  <input {...field} id='name' className='text-input' />
                 )}
               />
               {errors.name && (
-                <p className="text-error">{errors.name.message}</p>
+                <p className='text-error'>{errors.name.message}</p>
               )}
             </div>
-            <div className="exercises-form-row">
-              <label htmlFor="categoryId">Category:</label>
+            <div className='exercises-form-row'>
+              <label htmlFor='categoryId'>Category:</label>
               <Controller
-                name="categoryId"
+                name='categoryId'
                 control={control}
-                rules={{ required: "Category is required" }}
+                rules={{ required: 'Category is required' }}
                 render={({ field }) => (
-                  <select {...field} id="categoryId" className="text-input">
-                    <option value="">Select a category</option>
+                  <select {...field} id='categoryId' className='text-input'>
+                    <option value=''>Select a category</option>
                     {categories?.map((category) => (
                       <option key={category.id} value={category.id}>
                         {category.name}
@@ -122,52 +121,54 @@ export const UpsertExerciseModal = ({
                 )}
               />
               {errors.categoryId && (
-                <p className="text-error">{errors.categoryId.message}</p>
+                <p className='text-error'>{errors.categoryId.message}</p>
               )}
             </div>
-            <div className="exercises-form-row">
-              <label htmlFor="imageUrl">Image URL:</label>
+            <div className='exercises-form-row'>
+              <label htmlFor='imageUrl'>Image URL:</label>
               <Controller
-                name="imageUrl"
+                name='imageUrl'
                 control={control}
                 render={({ field }) => (
-                  <input {...field} id="imageUrl" className="text-input" />
+                  <input {...field} id='imageUrl' className='text-input' />
                 )}
               />
             </div>
-            <div className="exercises-form-row">
-              <label htmlFor="videoUrl">Video URL:</label>
+            <div className='exercises-form-row'>
+              <label htmlFor='videoUrl'>Video URL:</label>
               <Controller
-                name="videoUrl"
+                name='videoUrl'
                 control={control}
                 render={({ field }) => (
-                  <input {...field} id="videoUrl" className="text-input" />
+                  <input {...field} id='videoUrl' className='text-input' />
                 )}
               />
             </div>
-            <div className="exercises-form-row">
-              <label htmlFor="description">Description:</label>
+            <div className='exercises-form-row'>
+              <label htmlFor='description'>Description:</label>
               <Controller
-                name="description"
+                name='description'
                 control={control}
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    id="description"
-                    className="text-input text-area"
+                    id='description'
+                    className='text-input text-area'
                   />
                 )}
               />
             </div>
             {isAdmin && (
-              <div className="is-private-row">
-                <label htmlFor="isPrivate">Private:</label>
+              <div className='is-private-row'>
+                <label htmlFor='isPrivate'>Private:</label>
                 <Controller
-                  name="isPrivate"
+                  name='isPrivate'
                   control={control}
-                  render={({ field: { value, onBlur, onChange, name, ref, disabled } }) => (
-                     <input
-                      type="checkbox"
+                  render={({
+                    field: { value, onBlur, onChange, name, ref, disabled },
+                  }) => (
+                    <input
+                      type='checkbox'
                       checked={value}
                       onBlur={onBlur}
                       ref={ref}
@@ -179,7 +180,7 @@ export const UpsertExerciseModal = ({
                 />
               </div>
             )}
-            <button type="submit" className="btn">
+            <button type='submit' className='btn'>
               Save
             </button>
           </form>

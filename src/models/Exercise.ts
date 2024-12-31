@@ -1,6 +1,6 @@
-import { ExerciseCategory } from "./ExerciseCategory";
-import { User } from "./User";
-import { WorkoutExercise } from "./WorkoutExercise";
+import { ExerciseCategory } from './ExerciseCategory';
+import { User } from './User';
+import { WorkoutExercise } from './WorkoutExercise';
 
 export interface Exercise {
   id: string;
