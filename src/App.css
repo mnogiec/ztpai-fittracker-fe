@@ -47,7 +47,7 @@ select {
 /* BASE AND UTILS */
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: var(--color-font);
   background-color: #f5f5f5;
 }
@@ -816,6 +816,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .workouts-button-wrapper {
