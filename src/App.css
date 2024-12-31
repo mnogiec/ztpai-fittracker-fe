@@ -798,13 +798,14 @@ body {
 
 .workouts-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .workouts-action-button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  padding: 0 1rem;
 }
 
 .workouts-action-button i {
@@ -824,6 +825,7 @@ body {
   justify-content: center;
   margin-top: 3rem;
   text-align: center;
+  gap: 1rem;
 }
 
 .workouts-exercises-form {
@@ -851,8 +853,13 @@ body {
 
   .workouts-actions {
     width: 100%;
+    margin-top: 1rem;
     justify-content: space-evenly;
   }
+}
+
+.error-border {
+  border-color: var(--color-error) !important;
 }
 
 .is-private-row {
