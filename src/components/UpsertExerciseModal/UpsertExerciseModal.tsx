@@ -35,7 +35,7 @@ export const UpsertExerciseModal = ({
       description: exercise?.description || '',
       videoUrl: exercise?.videoUrl || '',
       imageUrl: exercise?.imageUrl || '',
-      isPrivate: exercise?.isPrivate ?? false,
+      isPrivate: exercise?.isPrivate ?? true,
     },
   });
 
